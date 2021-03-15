@@ -10,11 +10,11 @@
   padding-top: 20px;
 }
 
-.student-name {
-  position: relative;
-  top: -5px;
-}
-
 .collection-item form {
   margin-top: -5px;
+}
+
+
+nav {
+  background-color: blueviolet;
 }
