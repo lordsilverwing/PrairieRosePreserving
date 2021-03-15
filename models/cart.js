@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+require('mongoose-currency').loadType(mongoose);
+var Currency = mongoose.Types.Currency;
 
 const cartSchema = new Schema({
     cartUser: [{type: Schema.Types.ObjectId, ref: 'User'}],

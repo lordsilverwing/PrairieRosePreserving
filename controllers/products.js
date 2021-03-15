@@ -9,7 +9,7 @@ module.exports = {
 }
 function index(req, res) {
      Product.find({}, function(err, products) {
-       res.render('Product/index', { products });
+       res.render('products/index', { products });
      });
   }
   function show(req, res) {
@@ -23,10 +23,14 @@ function newProduct(req, res) {
 }
 function create(req, res){
     const product = new Product(req.body);
+
     product.save(function(err){
         if (err){
-            return res.redirect('products/new');
+           return res.redirect('products/new');
         }
-          res.redirect(`/products/${product._id}`)
-    })
+        console.log(product, ' this is the new product')
+        res.redirect(`/products`)
+        //res.redirect(`/products/${product._id}`)
+        })
 }
+

@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<div>
+  This is the new item page
+</div>
+<form id="new-form" action="/products" method="POST">
+    <label>Product Name</label>
+    <input type="text" name="name">
+    <label>Description:</label>
+    <input type="text" name="description">
+    <label>Price:</label>
+    <input type="number" name="price">
+    <label>Quantity Available:</label>
+    <input type="number" name="quantity">
+    <label>
+        <input type="checkbox" class="filled-in" checked="checked" />
+        <span>Available</span>
+      </label>
+      <label for="image">Upload Image</label>
+                <input type="file" id="image"
+                       name="image" value="" required>
+
+    <input type="submit" value="Add Product">
+  </form>
+  
+
+<%- include('../partials/footer') %>
