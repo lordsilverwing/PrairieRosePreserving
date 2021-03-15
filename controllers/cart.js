@@ -3,31 +3,17 @@ const Cart = require('../models/cart')
 
 module.exports = {
     index,
-    show,
-    new: newFlight,
-    create
+    deleteItem
 }
 function index(req, res) {
-     Product.find({}, function(err, products) {
-       res.render('Product/index', { products });
+     Cart.find({}, function(err, products) {
+       res.render('Cart/index', { products });
      });
   }
-  function show(req, res) {
-    Product.findById(req.params.id, function(err, products) {
-        res.render('Product/index', { products });
-      });)
+function deleteItem(req, res) {
+    Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
+        console.log(deletedProduct, ' this is removed item')
+        res.redirect('/cart');
+      });
 }
   
-function newFlight(req, res) {
-    res.render('flights/new');
-}
-function create(req, res){
-    const flight = new Flight(req.body);
-    flight.departs.setFullYear(flight.departs.getFullYear() + 1)
-    flight.save(function(err){
-        if (err){
-            return res.redirect('flights/new');
-        }
-          res.redirect(`/flights/${flight._id}`)
-    })
-}
