@@ -6,7 +6,6 @@ var Currency = mongoose.Types.Currency;
 const productSchema = new Schema({
     name: {type: String},
     description: {type: String},
-    imgPath: {type: String},
     price: {type: Currency, required: true, min: 0},
     quantity: {type: Number, min: 0, default: 1},
     available: {type: Boolean}

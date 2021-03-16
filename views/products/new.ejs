@@ -2,7 +2,7 @@
 <div>
   This is the new item page
 </div>
-<form id="new-form" action="/products" enctype="multipart/form-data" method="POST">
+<form id="new-form" action="/upload" enctype="multipart/form-data" method="POST">
     <label>Product Name</label>
     <input type="text" name="name">
     <label>Description:</label>
@@ -17,7 +17,7 @@
       </label>
       <label for="image">Upload Image</label>
                 <input type="file" id="image"
-                       name="image" value="">
+                       name="file" value="">
 
     <input type="submit" value="Add Product">
   </form>
