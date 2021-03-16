@@ -1,5 +1,7 @@
 const Product = require('../models/product')
 const Cart = require('../models/cart')
+var multer = require('multer');
+var fs = require('fs');
 
 module.exports = {
     index,
@@ -22,8 +24,9 @@ function newProduct(req, res) {
     res.render('products/new');
 }
 function create(req, res){
+    
     const product = new Product(req.body);
-
+    product.imgPath = saveImg(req, res, product);
     product.save(function(err){
         if (err){
            return res.redirect('products/new');
@@ -34,3 +37,19 @@ function create(req, res){
         })
 }
 
+const imageDir = 'uploads/'
+
+function saveImg(req, res, product){
+    var body = '';
+    let filePath = imageDir + product.name + '-' + Date.now();
+    req.on('data', function(data) {
+        body += data;
+    });
+
+    req.on('end', function (){
+        fs.appendFile(__dirPath + filePath, body, function() {
+            res.end();
+        });
+    });
+    return filePath;
+}
