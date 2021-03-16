@@ -9,12 +9,12 @@ module.exports = {
 }
 function index(req, res) {
      Product.find({}, function(err, products) {
-       res.render('products/index', { products });
+        res.render('products/index', { products });
      });
   }
   function show(req, res) {
-    Product.findById(req.params.id, function(err, products) {
-        res.render('Product/show');
+    Product.findById(req.params.id, function(err, product) {
+        res.render('products/show', {product});
       });
 }
   
@@ -22,6 +22,7 @@ function newProduct(req, res) {
     res.render('products/new');
 }
 function create(req, res){
+    const product = new Product(req.body);
     product.save(function(err){
          if (err){
             return res.redirect('products/new');

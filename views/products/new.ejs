@@ -2,23 +2,15 @@
 <div>
   This is the new item page
 </div>
-<form id="new-form" action="/upload" enctype="multipart/form-data" method="POST">
+<form id="new-form" action="/products" method="POST">
     <label>Product Name</label>
     <input type="text" name="name">
     <label>Description:</label>
     <input type="text" name="description">
     <label>Price:</label>
-    <input type="number" name="price">
+    <input type="currency" name="price">
     <label>Quantity Available:</label>
     <input type="number" name="quantity">
-    <label>
-        <input type="checkbox" class="filled-in" checked="checked" />
-        <span>Available</span>
-      </label>
-      <label for="image">Upload Image</label>
-                <input type="file" id="image"
-                       name="file" value="">
-
     <input type="submit" value="Add Product">
   </form>
   

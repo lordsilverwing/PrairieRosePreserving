@@ -1,6 +1,26 @@
 <%- include('../partials/header') %>
 <div>
   This is the product main page
+  <h1>Products</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% products.forEach(function(i) { %>
+              <tr>
+                  <td><%= i.name %></td>
+                  <td><%= (i.price / 100).toFixed(2)  %></td>
+                  <td><input type="number" name="quantity"></td>
+                 <td><a href="/products/<%= i._id %>">Details</a></td>
+              </tr>
+          <% }); %>
+      </tbody>
+  </table>
   <a href="/products/new">Add new item</a>
 </div>
 

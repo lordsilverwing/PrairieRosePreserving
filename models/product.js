@@ -8,7 +8,6 @@ const productSchema = new Schema({
     description: {type: String},
     price: {type: Currency, required: true, min: 0},
     quantity: {type: Number, min: 0, default: 1},
-    available: {type: Boolean}
   }, {
     timestamps: true
   });
