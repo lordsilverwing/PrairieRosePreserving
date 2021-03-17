@@ -2,6 +2,7 @@
 <div>
   This is the cart
 </div>
+<% if (cart.products.length) {%>
 <table>
     <thead>
         <tr>
@@ -26,5 +27,7 @@
     <div>
 
     </div>
-
+<% } else { %>
+    <h2>No items in Cart</h2>
+<% } %>
 <%- include('../partials/footer') %>
