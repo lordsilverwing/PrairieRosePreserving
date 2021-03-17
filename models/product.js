@@ -4,11 +4,11 @@ require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 
 const productSchema = new Schema({
-    name: {type: String},
-    description: {type: String},
-    price: {type: Currency, required: true, min: 0},
-    quantity: {type: Number, min: 0, default: 1},
-  }, {
+    productId: Number,
+    quantity: Number,
+        name: String,
+        price: Number
+   }, {
     timestamps: true
   });
 

@@ -3,10 +3,31 @@ const Schema = mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 var Currency = mongoose.Types.Currency;
 
-const cartSchema = new Schema({
-    cartUser: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    total: {type: Number},
-    product: [{type: Schema.Types.ObjectId, ref: 'Product'}]
-})
+const cartSchema = new mongoose.Schema(
+    {
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      },
+      products: [
+        {
+            productId: Number,
+            quantity: Number,
+            name: String,
+            price: Number
+        }
+      ],
+      active: {
+        type: Boolean,
+        default: true
+      },
+      modifiedOn: {
+        type: Date,
+        default: Date.now
+      }
+    },
+    { timestamps: true }
+  );
+  
 
 module.exports = mongoose.model('Cart', cartSchema); 

@@ -2,5 +2,21 @@
 <div>
   This is the cart
 </div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% cart.products.forEach(function(i) { %>
+            <tr>
+                <td><%= i.name %></td>
+                <td><%= (i.price / 100).toFixed(2)  %></td>
+             </tr>
+        <% }); %>
+    </tbody>
 
 <%- include('../partials/footer') %>

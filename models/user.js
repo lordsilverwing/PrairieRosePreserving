@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
     name: String,
     email: String,
-    googleId: String
+    googleId: String,
+    cart: {type: Schema.Types.ObjectId, ref: 'Cart'}
   }, {
     timestamps: true
   });
