@@ -4,39 +4,36 @@ const User = require('../models/user')
 
 module.exports = {
     index,
-    deleteItem,
+    delete : deleteItem,
     addToCart
 }
-// function addToCart(req, res){
-//   Product.findById(req.params.productId, function(err, product){
-//     cart.product.push(req.body.productId)
 
-//     cart.save(function(err){
-//       res.redirect('products/index')
-//     })
-//   })
-// }
 function index(req, res) {
   if(!req.user || !req.user.id){
     return res.redirect('/')
   }
-    //const userId = req.user.id;
-     //User.findById(req.user.id, function(err, user) {
        Cart.find({userId: req.user.id}, function(err, carts){
          console.log(carts[0], 'this is the user/cart')
          res.render('cart/index', { cart:carts[0] });
        })
-       
+        
     // });
   }
-function deleteItem(req, res) {
-    Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
-        console.log(deletedProduct, ' this is removed item')
-        res.redirect('/cart');
-      });
+async function deleteItem(req, res) {
+  const productId = req.params.id;
+  const userId = req.user.id;
+  let cart = await Cart.findOne({userId})
+  if (cart) {
+    let itemIndex = cart.products.findIndex(p => p.productId == productId);
+    if (itemIndex > -1) {
+      cart.products.splice(index, 1)
+      cart = await cart.save();
+      return res.redirect('/cart')
+    }
+  }
 }
 async function addToCart(req, res) {
-  const { productId, quantity, name, price } = req.body;
+  const { product: productId, quantity, name, price } = req.body;
 
   const userId = req.user.id; //TODO: the logged in user id
 

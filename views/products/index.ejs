@@ -18,7 +18,7 @@
                   <td><%= (i.price / 100).toFixed(2)  %></td>
                   <td><input type="number" name="quantity"></td>
                   <td>
-                    <input type="hidden" name="product" value="<%= i.id %>"/>
+                    <input type="hidden" name="product" value="<%= i.productId %>"/>
                     <input type="hidden" name="price" value="<%= i.price %>"/>
                     <input type="hidden" name="name" value="<%= i.name %>"/>
                     <input type="submit" value="Add Product">

@@ -8,6 +8,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Remove Item</th>
         </tr>
     </thead>
     <tbody>
@@ -15,8 +16,15 @@
             <tr>
                 <td><%= i.name %></td>
                 <td><%= (i.price / 100).toFixed(2)  %></td>
+                <td><%= i.quantity %></td>
+                <td><form action="/cart/<%=i.productId%>?_method=DELETE" method="POST">
+                    <button type="submit">Remove</button>
+                  </form></td>
              </tr>
         <% }); %>
     </tbody>
+    <div>
+
+    </div>
 
 <%- include('../partials/footer') %>
