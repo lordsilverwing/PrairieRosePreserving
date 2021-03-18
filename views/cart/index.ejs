@@ -14,7 +14,7 @@
         <% carts[0].products.forEach(function(i) { %>
             <tr>
                 <td><%= i.name %></td>
-                <td><%= (i.price / 100).toFixed(2)  %></td>
+                <td>$<%= (i.price / 100).toFixed(2)  %></td>
                 <td><%= i.quantity %></td>
                 <td><form action="/cart/<%=i.productId%>?_method=DELETE" method="POST">
                     <button type="submit">Remove</button>
@@ -22,9 +22,24 @@
              </tr>
         <% }); %>
     </tbody>
-    
-
-   <h2><% carts[0].total %> </h2> 
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>total</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% carts.forEach(function(i) { %>
+                <tr>
+                    <td>$<%= (i.total / 100).toFixed(2)%></td>
+                    <td><form action="/cart?_method=DELETE" method="POST">
+                        <button type="submit">Remove</button>
+                      </form></td>
+                </tr>
+            <% }); %>
+        </tbody>
+        
 
 <% } else { %>
     <h2>No items in Cart</h2>
