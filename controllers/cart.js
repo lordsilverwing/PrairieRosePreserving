@@ -1,24 +1,26 @@
 const Product = require('../models/product')
 const Cart = require('../models/cart')
 const User = require('../models/user')
+const { checkout } = require('../routes')
 
 module.exports = {
     index,
     delete : deleteItem,
-    addToCart
+    addToCart,
+    update : checkout,
 }
 
 function index(req, res) {
   if(!req.user || !req.user.id){
     return res.redirect('/')
   }
-       Cart.find({userId: req.user.id}, function(err, carts){
-         console.log(carts[0], 'this is the user/cart')
-         res.render('cart/index', { cart:carts[0] });
-       })
-        
-    // });
-  }
+    Cart.find({userId: req.user.id}, function(err, carts){
+    carts.total = getCartTotal(carts)
+    res.render('cart/index', { carts });
+    })
+      
+  // });
+}
 async function deleteItem(req, res) {
   const productId = req.params.id;
   const userId = req.user.id;
@@ -69,3 +71,7 @@ async function addToCart(req, res) {
     res.status(500).send("Something went wrong");
   }
 }; 
+
+function getCartTotal(cart){
+  return cart[0].products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);
+}

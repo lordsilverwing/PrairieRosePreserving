@@ -5,14 +5,15 @@
 <form id="new-form" action="/products" method="POST">
     <label>Product Name</label>
     <input type="text" name="name">
-    <label>Description:</label>
-    <input type="text" name="description">
     <label>Price:</label>
     <input type="number" name="price">
     <label>ProductId:</label>
     <input type="number" name="productId">
+    <label>Product Description</label>
+    <textarea name="description" form="new-form">Enter text here...</textarea><br>
     <input type="submit" value="Add Product">
   </form>
+  
   
 
 <%- include('../partials/footer') %>

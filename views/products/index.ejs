@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 <div>
-  This is the product main page
   <h1>Products</h1>
   <table>
       <thead>
@@ -16,7 +15,7 @@
               <tr>
                   <td><%= i.name %></td>
                   <td><%= (i.price / 100).toFixed(2)  %></td>
-                  <td><input type="number" name="quantity"></td>
+                  <td><input type="number" name="quantity" min="1" max="10" value="1"></td>
                   <td>
                     <input type="hidden" name="product" value="<%= i.productId %>"/>
                     <input type="hidden" name="price" value="<%= i.price %>"/>

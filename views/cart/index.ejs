@@ -1,9 +1,7 @@
 <%- include('../partials/header') %>
-<div>
-  This is the cart
-</div>
-<% if (cart.products.length) {%>
-<table>
+
+<% if (carts[0].products.length) {%>
+<table class="highlight">
     <thead>
         <tr>
             <th>Name</th>
@@ -13,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <% cart.products.forEach(function(i) { %>
+        <% carts[0].products.forEach(function(i) { %>
             <tr>
                 <td><%= i.name %></td>
                 <td><%= (i.price / 100).toFixed(2)  %></td>
@@ -24,9 +22,10 @@
              </tr>
         <% }); %>
     </tbody>
-    <div>
+    
 
-    </div>
+   <h2><% carts[0].total %> </h2> 
+
 <% } else { %>
     <h2>No items in Cart</h2>
 <% } %>

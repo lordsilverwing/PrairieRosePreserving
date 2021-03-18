@@ -5,7 +5,7 @@ var Currency = mongoose.Types.Currency;
 
 const productSchema = new Schema({
     productId: Number,
-    quantity: Number,
+    quantity: {type: Number, min: 1, max: 10, deafult: 1},
     name: String,
     price: Number,
     description: String,

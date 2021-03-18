@@ -1,12 +1,11 @@
 <%- include('../partials/header') %>
 <div>
-  This is the item detail page
-  <section id="show-page">
+    <section id="show-page">
     <div id="productinfo"><%= product.name%></div>
     <div id="productinfo"><%= product.description %></div>
     <div id="productinfo"><%= product.price %></div>
     <form id="add-product-to-cart" action='/cart' method="POST">
-        <div id="productinfo"><input type="number" name="quantity"></div>
+        <div id="productinfo"><input type="number" name="quantity" min="1" max="10" value="1"></div>
         <input type="hidden" name="product" value="<%= product.productId %>"/>
         <input type="hidden" name="price" value="<%= product.price %>"/>
         <input type="hidden" name="name" value="<%= product.name %>"/>

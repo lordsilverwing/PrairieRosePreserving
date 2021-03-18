@@ -20,10 +20,17 @@
     <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
+            <ul class="left">
+            <li>
             <a href="/">Prairie Rose Preserving</a>
+            </li><li>
             <a href="/products">Market</a>
-            <a href="/cart">Cart</a>
+            </li>
+            </ul>
             <ul class="right">
+                <li>
+                    <a href="/cart">Cart</a>
+                </li>
               <li>
                 <% if (user) { %>
                   <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
