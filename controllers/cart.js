@@ -12,7 +12,7 @@ module.exports = {
 
 function index(req, res) {
   if(!req.user || !req.user.id){
-    return res.redirect('/')
+    return res.redirect('/user')
   }
     Cart.find({userId: req.user.id}, function(err, carts){
     res.render('cart/index', { carts });
@@ -32,6 +32,9 @@ async function deleteItem(req, res) {
   }
 }
 async function addToCart(req, res) {
+  if(!req.user || !req.user.id){
+    return res.redirect('/user')
+  }
   const { product: productId, quantity, name, price } = req.body;
 
   const userId = req.user.id;

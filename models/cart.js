@@ -12,7 +12,7 @@ const cartSchema = new mongoose.Schema(
       products: [
         {
             productId: Number,
-            quantity: Number,
+            quantity:{type: Number, enum: [1, 2, 3, 4, 5, 6]},
             name: String,
             price: Number
         }

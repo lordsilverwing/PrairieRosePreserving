@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+<div>
+  <h1>Products</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% products.forEach(function(i) { %>
+            <form id="add-i-to-cart" action='/cart' method="POST">
+              <tr>
+                  <td><%= i.name %></td>
+                  <td>$<%= (i.price / 100).toFixed(2)  %></td>
+                  <td><input type="number" name="quantity" min="1" max="10" value="1"></td>
+                  <td>
+                    <input type="hidden" name="product" value="<%= i.productId %>"/>
+                    <input type="hidden" name="price" value="<%= i.price %>"/>
+                    <input type="hidden" name="name" value="<%= i.name %>"/>
+                    <input type="submit" value="Add Product">
+                  </td>
+                 <td><a href="/products/<%= i._id %>">Details</a></td>
+              </tr>
+              </form>
+          <% }); %>
+      </tbody>
+  </table>
+  <a href="/products/new">Add new item</a>
+</div>
+
+<%- include('../partials/footer') %>
