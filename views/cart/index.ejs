@@ -30,14 +30,15 @@
             </tr>
         </thead>
         <tbody>
-            <% carts.forEach(function(i) { %>
+           
                 <tr>
-                    <td>$<%= (i.total / 100).toFixed(2)%></td>
+                    <% const total = carts[0].products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);%>
+                    <td>$<%= (total / 100).toFixed(2)%></td>
                     <td><form action="/cart?_method=DELETE" method="POST">
                         <button type="submit">Check Out</button>
                       </form></td>
                 </tr>
-            <% }); %>
+
         </tbody>
         
 

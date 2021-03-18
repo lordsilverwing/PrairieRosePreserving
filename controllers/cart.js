@@ -51,11 +51,9 @@ async function addToCart(req, res) {
         let productItem = cart.products[itemIndex];
         productItem.quantity = quantity;
         cart.products[itemIndex] = productItem;
-        cart.total = cart.products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);
       } else {
         //product does not exists in cart, add new item
-        cart.products.push({ productId, quantity, name, price });
-        cart.total = cart.products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);
+        cart.products.push({ productId, quantity, name, price });      
       }
       cart = await cart.save();
       return res.redirect('/products')
@@ -82,7 +80,6 @@ async function emptyCart(req, res) {
   try {
       let cart = await Cart.findOne({userId})
       cart.products = [];
-      cart.total = 0
       let data = await cart.save();
       res.redirect('/cart')
    } catch (err) {

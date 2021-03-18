@@ -24,8 +24,7 @@ const cartSchema = new mongoose.Schema(
       modifiedOn: {
         type: Date,
         default: Date.now
-      },
-      total: Number
+      }
     },
     { timestamps: true }
   );

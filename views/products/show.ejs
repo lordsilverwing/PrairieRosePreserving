@@ -13,5 +13,8 @@
       </form>
     </section>
 </div>
-
+<script> document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+  });</script>
 <%- include('../partials/footer') %>
