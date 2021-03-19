@@ -1,4 +1,3 @@
-https://prairierosepreserving.herokuapp.com/
 # Lord Silverwing Presents Prairie Rose Preserving!
 A Node.js, Express, Mongoose, MongoDb and deployment to Heroku project!
 
