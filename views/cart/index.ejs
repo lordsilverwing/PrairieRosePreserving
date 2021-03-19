@@ -24,18 +24,17 @@
         <% }); %>
     </tbody>
 </table>
- 
-                    <% const total = carts[0].products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);%>
-                    <div class="right">
-                    <p> Total is: $<%= (total / 100).toFixed(2)%></p>
-                    <form action="/cart?_method=DELETE" method="POST">
-                        <button class="waves-effect waves-light btn" type="submit">Check Out</button>
-                      </form>
-                      </div>
+    <% const total = carts[0].products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);%>
+    <div class="right">
+        <p> Total is: $<%= (total / 100).toFixed(2)%></p>
+        <form action="/cart?_method=DELETE" method="POST">
+            <button class="waves-effect waves-light btn" type="submit">Check Out</button>
+        </form>
+    </div>
 </div>
 <% } else if (carts.length) { %>
-    <h2 id="cartmessage">No items in Cart, please add items to Cart</h2>
+<h2 class="center">No items in Cart, please add items to Cart</h2>
 <% } else {%>
-    <h2>No items in Cart, please add items to Cart</h2>
+<h2 class="center">No items in Cart, please add items to Cart</h2>
 <% } %>
 <%- include('../partials/footer') %>
