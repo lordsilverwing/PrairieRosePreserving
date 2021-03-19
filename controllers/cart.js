@@ -39,7 +39,7 @@ async function deleteItem(req, res) {
 	if (cart) {
 		let itemIndex = cart.products.findIndex(p => p.productId == productId);
 		if (itemIndex > -1) {
-			cart.products.splice(index, 1)
+			cart.products.splice(itemIndex, 1)
 			cart = await cart.save();
 			return res.redirect('/cart')
 		}
