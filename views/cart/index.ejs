@@ -1,7 +1,8 @@
 <%- include('../partials/header') %>
 
 <% if (carts[0].products.length) {%>
-<table class="highlight">
+<div class="productBox">
+<table class="highlight centered">
     <thead>
         <tr>
             <th>Name</th>
@@ -22,27 +23,19 @@
              </tr>
         <% }); %>
     </tbody>
-    <table class="highlight">
-        <thead>
-            <tr>
-                <th>total</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-           
-                <tr>
+</table>
+ 
                     <% const total = carts[0].products.reduce((acc, product) => { return acc + (product.price * product.quantity) }, 0);%>
-                    <td>$<%= (total / 100).toFixed(2)%></td>
-                    <td><form action="/cart?_method=DELETE" method="POST">
-                        <button type="submit">Check Out</button>
-                      </form></td>
-                </tr>
-
-        </tbody>
-        
-
-<% } else { %>
-    <h2>No items in Cart</h2>
+                    <div class="right">
+                    <p> Total is: $<%= (total / 100).toFixed(2)%></p>
+                    <form action="/cart?_method=DELETE" method="POST">
+                        <button class="waves-effect waves-light btn" type="submit">Check Out</button>
+                      </form>
+                      </div>
+</div>
+<% } else if (carts.length) { %>
+    <h2 id="cartmessage">No items in Cart, please add items to Cart</h2>
+<% } else {%>
+    <h2>No items in Cart, please add items to Cart</h2>
 <% } %>
 <%- include('../partials/footer') %>

@@ -1,19 +1,33 @@
 <%- include('../partials/header') %>
-<div>
+<div class="productBox" id="showbox">
     <section id="show-page">
-    <div id="productinfo"><%= product.name%></div>
-    <div id="productinfo"><%= product.description %></div>
-    <div id="productinfo"><%= product.price %></div>
-    <form id="add-product-to-cart" action='/cart' method="POST">
-        <div id="productinfo"><input type="number" name="quantity" min="1" max="10" value="1"></div>
+    <h2 class="center" id="productinfo"><%= product.name%></h2>
+    <div class="center"><img width="400" height="300" src="<%= product.imageUrl %>"/></div>
+    
+    <div class="center" id="productinfo"><%= product.description %></div>
+    <div class="center" id="productinfo">$<%= (product.price / 100).toFixed(2) %></div>
+    <form class= "center" id="add-product-to-cart" action='/cart' method="POST">
+        <div class="input-field">
         <input type="hidden" name="product" value="<%= product.productId %>"/>
         <input type="hidden" name="price" value="<%= product.price %>"/>
         <input type="hidden" name="name" value="<%= product.name %>"/>
-        <input type="submit" value="Add Product">
+            <select name="quantity">
+                <option selected value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                 </select>     
+                <label>Quantity</label>
+             </div>
+            <input type="submit" value="Add To Cart">  
+        
       </form>
     </section>
 </div>
-<script> document.addEventListener('DOMContentLoaded', function() {
+<script> 
+    document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {});
   });</script>

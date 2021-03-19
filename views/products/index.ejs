@@ -1,16 +1,20 @@
 <%- include('../partials/header') %>
-<div>
-  <h1>Products</h1>
+ <h1 class="center">Marketplace</h1>
+<div class="productBox">
+ 
     <% products.forEach(function(i) { %>
-        <form id="add-i-to-cart" action='/cart' method="POST">
-            <ul>
-                <li>><a href="/products/<%= i._id %>"><%= i.name %></a>
-                </li><br>
-                <li>><a href="/products/<%= i._id %>"></a><img src="<%= i.imgUrl %>"/></a>
-                </li><br>
-                <li>Price: $<%= (i.price / 100).toFixed(2)  %></li><br>
-                <li>
-                    <div class="input-field col s12">
+        <form class="left" id="add-i-to-cart" action='/cart' method="POST">
+            <input type="hidden" name="product" value="<%= i.productId %>"/>
+            <input type="hidden" name="price" value="<%= i.price %>"/>
+            <input type="hidden" name="name" value="<%= i.name %>"/>
+            <ul id="products">
+                <li class="center"><h5><a href="/products/<%= i._id %>"><%= i.name %></a></h5>
+                </li>
+                <li><a href="/products/<%= i._id %>"><img width="225" height="200" src="<%= i.imageUrl %>"/></a>
+                </li>
+                <li class="center">Price: $<%= (i.price / 100).toFixed(2)  %></li>
+                <li class="center">
+                    <div class="input-field">
                     <select name="quantity">
                         <option selected value=1>1</option>
                         <option value=2>2</option>
@@ -20,22 +24,15 @@
                         <option value=6>6</option>
                          </select>     
                         <label>Quantity</label>
-                    </div>                   
-                </li><br><br><br>
-                <li>
-                    <input type="hidden" name="product" value="<%= i.productId %>"/>
-                    <input type="hidden" name="price" value="<%= i.price %>"/>
-                    <input type="hidden" name="name" value="<%= i.name %>"/>
-                    <input type="submit" value="Add Product">
-                    <a href="/products/<%= i._id %>">Details</a>
+                     </div>
+                     <button class="btn-floating btn-large waves-effect waves-light green" type="submit"><i class="material-icons">add_shopping_cart</i></button>
                 </li>
-                
-            </ul><br>
+            </ul>
 
         </form>       
     <% }); %>
  
-  <a href="/products/new">Add new item</a>
+ 
 </div>
 <script> document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');

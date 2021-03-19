@@ -29,7 +29,6 @@ function create(req, res){
          }
          console.log(product, ' this is the new product')
          res.redirect(`/products`)
-         //res.redirect(`/products/${product._id}`)
          })
  }
  
